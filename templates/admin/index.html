@@ -1,0 +1,80 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static %}{% load admin_list  %}
+
+{% block extrastyle %}{{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dashboard.css' %}"/>
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+{% endblock %}
+
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+<div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info counter">
+              <div class="inner">
+                <h3>{{dashboard_count.tournament_admin}}</h3>
+                <p>Tournament Admin</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/admin/users/user_reg/?groups__id__exact=2" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success" style="background-color:#D3D3D3;">
+              <div class="inner">
+                <h3>{{dashboard_count.match}}  </h3>
+<!--                <sup style="font-size: 20px">%</sup></h3>-->
+
+                <p>Matches</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="/admin/tournament/matchdata/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col-->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <h3>{{dashboard_count.tournaments}}</h3>
+
+                <p>Tournament</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-pie-graph "></i>
+              </div>
+              <a href="/admin/tournament/tournament/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{dashboard_count.players}}</h3>
+
+                <p>Players</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/admin/users/user_reg/" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+
+{% endblock %}
