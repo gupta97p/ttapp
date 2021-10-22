@@ -225,6 +225,7 @@ class HomeView(ViewSet):
             return Response("error " + str(e), 500)
 
     def list(self, request):
+        #list filter based on gender
         if 'gender' in request.GET:
             gender = request.GET.get('gender')
             queryset = user_reg.objects.filter(groups__name='player', gender=gender).order_by('username')
@@ -232,6 +233,8 @@ class HomeView(ViewSet):
             queryset = user_reg.objects.filter(groups__name='player').order_by('username')
         serializer_class = RegisterSerializer(queryset, many=True)
         result = []
+
+        #for searching any user
         if 'username' in request.GET:
             for i in serializer_class.data:
                 if request.GET.get('username') in i['username']:
